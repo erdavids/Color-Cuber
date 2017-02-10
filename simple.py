@@ -3,11 +3,29 @@ from operator import attrgetter
 
 FILL = (0, 0, 0)
 
+
+def weighted_average(hist):
+	total = sum(hist)
+	value = sum(i * x for i, x in enumerate(hist)) / total
+	error = sum(x * (value - i) ** 2 for i, x in enumerate(hist)) / total
+	error = error ** 0.5
+	return value, error
+
+def color_from_histogram(hist):
+	r, re = weighted_average(hist[:256])
+	g, ge = weighted_average(hist[256:512])
+	b, be = weighted_average(hist[512:768])
+	e = re * 0.2989 + ge * 0.5870 + be * 0.1140
+	return (r, g, b), e
+
 class Section(object):
 
 	def __init__(self, size):
-		self.origin_1, self.origin_2, self.width, self.height = size
-		self.error
+		self.size = size
+		
+		histogram = self.image.crop(self.size).histogram()
+		self.color, self.error = color_from_histogram(histogram)
+		
 	def split(self):
 		print ('some')
 	
@@ -16,7 +34,8 @@ class Original(object):
 		self.image = image
 		self.list = []
 	def split(self):
-		max_error = max(list, key=attrgetter('error'))
+		print ('some')
+		#max_error = max(list, key=attrgetter('error'))
 		
 def main():
 	orig = Image.open('orig/image_1.jpg').convert('RGB')
