@@ -17,26 +17,56 @@ def color_from_histogram(hist):
     g, ge = weighted_average(hist[256:512])
     b, be = weighted_average(hist[512:768])
     e = re * 0.2989 + ge * 0.5870 + be * 0.1140
-    return (r, g, b), e
+    return (int(r), int(g), int(b)), e
 
 
 class Section(object):
-
     def __init__(self, original, border):
         self.original = original
         self.border = border
 
+        # Get the color and error of the section
         histogram = self.original.image.crop(self.border).histogram()
         self.color, self.error = color_from_histogram(histogram)
 
+        # Add the new section to the list
         self.original.list.append(self)
 
     def split(self):
-        print('some')
-        # Something
+        # used to calculate borders for splits
+        x0, y0, x1, y1 = self.border
+
+        x0 = int(x0)
+        y0 = int(y0)
+        x1 = int(x1)
+        y1 = int(y1)
+
+        # width-middle, height-middle
+        wm = int(x0 + (x1 - x0)/2)
+        hm = int(y0 + (y1 - y0)/2)
+
+        # Create the new sections
+        #top_left
+        Section(self.original, (x0, y0, wm, hm))
+        #top_right
+        Section(self.original, (wm, y0, x1, hm))
+        #bottom_left
+        Section(self.original, (x0, hm, wm, y1))
+        #bottom_right
+        Section(self.original, (wm, hm, x1, y1))
+
+    def create(self):
+        draw = ImageDraw.Draw(self.original.image)
+        draw.rectangle(self.border, self.color)
+
+
+# draw = ImageDraw.Draw(orig)
+# draw.rectangle((0,0,width/2,height/2), FILL)
+# draw.rectangle((width/2,height/2,width,height), FILL)
+# box = (origin, origin, width, height)
+
 
 class Original(object):
-
     def __init__(self, image):
         self.image = image
         self.width, self.height = self.image.size
@@ -44,8 +74,20 @@ class Original(object):
         self.orig = Section(self, (0, 0, self.width, self.height))
 
     def split(self):
-        print('some')
-        #max_error = max(list, key=attrgetter('error'))
+        max_error_obj = max(self.list, key=attrgetter('error'))
+        self.list.remove(max(self.list, key=attrgetter('error')))
+        max_error_obj.split()
+
+    def drawSections(self):
+        new_im = Image.new('RGB', (self.width, self.height))
+        draw = ImageDraw.Draw(new_im)
+        draw.rectangle((0, 0, self.width, self.height), FILL)
+        for sect in self.list:
+            x0, y0, x1, y1 = sect.border
+            print(x0, y0, x1, y1)
+            draw.rectangle((x0, y0, x1, y1), sect.color)
+
+        new_im.save('mod/image_1.png')
 
 
 def main():
@@ -53,16 +95,18 @@ def main():
 
     original = Original(orig)
 
-    original.split()
+    for x in range (1):
+        original.split()
+
+
+    original.drawSections()
     # orig.show()
-    #width, height = orig.size
+    # width, height = orig.size
 
-    #draw = ImageDraw.Draw(orig)
-    #draw.rectangle((0,0,width/2,height/2), FILL)
-    #draw.rectangle((width/2,height/2,width,height), FILL)
-    #box = (origin, origin, width, height)
-
-    orig.save('mod/image_1.png')
+    # draw = ImageDraw.Draw(orig)
+    # draw.rectangle((0,0,width/2,height/2), FILL)
+    # draw.rectangle((width/2,height/2,width,height), FILL)
+    # box = (origin, origin, width, height)
 
 
 if __name__ == "__main__":
