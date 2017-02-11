@@ -8,7 +8,7 @@ def weighted_average(hist):
     total = sum(hist)
     value = sum(i * x for i, x in enumerate(hist)) / total
     error = sum(x * (value - i) ** 2 for i, x in enumerate(hist)) / total
-    error = error ** 0.5
+    error = error
     return value, error
 
 
@@ -31,7 +31,7 @@ class Section(object):
 
         self.area = self.area()
 
-        self.priority = (self.area*.25) * (self.error)
+        self.priority = (self.area**.5) * (int(self.error))
         # Add the new section to the list
         self.original.list.append(self)
 
@@ -91,29 +91,22 @@ class Original(object):
         draw.rectangle((0, 0, self.width, self.height), FILL)
         for sect in self.list:
             x0, y0, x1, y1 = sect.border
-            print(x0, y0, x1, y1, sect.priority)
+            print(int(sect.priority), int(sect.area), int(sect.error))
             draw.rectangle((x0+1, y0+1, x1-1, y1-1), sect.color)
 
         new_im.save('mod/image_1.png')
 
 
 def main():
-    orig = Image.open('orig/image_1.jpg').convert('RGB')
+    orig = Image.open('orig/test_big.jpg').convert('RGB')
 
     original = Original(orig)
 
-    for x in range (25):
+    for x in range (2000):
         original.split()
 
 
     original.drawSections()
-    # orig.show()
-    # width, height = orig.size
-
-    # draw = ImageDraw.Draw(orig)
-    # draw.rectangle((0,0,width/2,height/2), FILL)
-    # draw.rectangle((width/2,height/2,width,height), FILL)
-    # box = (origin, origin, width, height)
 
 
 if __name__ == "__main__":
