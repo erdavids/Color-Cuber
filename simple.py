@@ -29,8 +29,15 @@ class Section(object):
         histogram = self.original.image.crop(self.border).histogram()
         self.color, self.error = color_from_histogram(histogram)
 
+        self.area = self.area()
+
+        self.priority = (self.area*.25) * (self.error)
         # Add the new section to the list
         self.original.list.append(self)
+
+    def area(self):
+        x0, y0, x1, y1 = self.border
+        return (x1 - x0) * (y1 - y0)
 
     def split(self):
         # used to calculate borders for splits
@@ -74,8 +81,8 @@ class Original(object):
         self.orig = Section(self, (0, 0, self.width, self.height))
 
     def split(self):
-        max_error_obj = max(self.list, key=attrgetter('error'))
-        self.list.remove(max(self.list, key=attrgetter('error')))
+        max_error_obj = max(self.list, key=attrgetter('priority'))
+        self.list.remove(max(self.list, key=attrgetter('priority')))
         max_error_obj.split()
 
     def drawSections(self):
@@ -84,8 +91,8 @@ class Original(object):
         draw.rectangle((0, 0, self.width, self.height), FILL)
         for sect in self.list:
             x0, y0, x1, y1 = sect.border
-            print(x0, y0, x1, y1)
-            draw.rectangle((x0, y0, x1, y1), sect.color)
+            print(x0, y0, x1, y1, sect.priority)
+            draw.rectangle((x0+1, y0+1, x1-1, y1-1), sect.color)
 
         new_im.save('mod/image_1.png')
 
@@ -95,7 +102,7 @@ def main():
 
     original = Original(orig)
 
-    for x in range (1):
+    for x in range (25):
         original.split()
 
 
