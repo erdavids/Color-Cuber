@@ -4,9 +4,9 @@ from operator import attrgetter
 
 #############################
 # EDIT THESE FOR PERSONAL USE (
-PATH_LOAD = 'orig/sunflower.jpg'
-ITERATIONS = 2048
-PATH_SAVE = 'mod/sunflower.png'
+PATH_LOAD = 'orig/barn.jpg'
+ITERATIONS = 400
+PATH_SAVE = 'mod/barn.png'
 #############################
 
 # Background color, forms color of section padding
@@ -16,7 +16,7 @@ FILL = (256, 256, 256)
 SAVEALL = False
 
 # Creates Ellipses instead, doesn't look great without a square image
-ELLIPSE = True
+ELLIPSE = False
 
 def weighted_average(hist):
     total = sum(hist)

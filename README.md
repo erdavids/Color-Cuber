@@ -16,11 +16,9 @@ Place the image in the orig folder and edit the fields at the top for preference
 
 Examples:
 
-![Eiffel](http://imgur.com/a/d1syf)
+![Eiffel](http://i.imgur.com/RElxD3Z.png)
 
-![Wolf](http://imgur.com/a/BuRGw)
-
-![]
+![Wolf](http://i.imgur.com/UUi4Lc6.png)
 
 
 I drew heavy inspiration from Quads by Michael Fogleman. It is an open source project that can be found ![here](https://github.com/fogleman/Quads). The only code that I used of his is the calculation of the average color and average error, although I edited the error function slightly. I borrowed the `color_from_histogram` function because I am unfamiliar with traversing histograms.
