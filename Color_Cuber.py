@@ -1,19 +1,22 @@
 from PIL import Image, ImageDraw
 from operator import attrgetter
 
-# Background color, forms color of section padding
-FILL = (0, 0, 0)
 
 #############################
 # EDIT THESE FOR PERSONAL USE (
-PATH_LOAD = 'orig/example_load.jpg'
-ITERATIONS = 1024
-PATH_SAVE = 'eyes_gif/example_save.png'
+PATH_LOAD = 'orig/sunflower.jpg'
+ITERATIONS = 2048
+PATH_SAVE = 'mod/sunflower.png'
 #############################
 
+# Background color, forms color of section padding
+FILL = (256, 256, 256)
 
+# Will save all images created, each frame, NOT RECOMMENDED
 SAVEALL = False
-ELLIPSE = False
+
+# Creates Ellipses instead, doesn't look great without a square image
+ELLIPSE = True
 
 def weighted_average(hist):
     total = sum(hist)
@@ -76,12 +79,6 @@ class Section(object):
     def create(self):
         draw = ImageDraw.Draw(self.original.image)
         draw.rectangle(self.border, self.color)
-
-
-# draw = ImageDraw.Draw(orig)
-# draw.rectangle((0,0,width/2,height/2), FILL)
-# draw.rectangle((width/2,height/2,width,height), FILL)
-# box = (origin, origin, width, height)
 
 
 class Original(object):
