@@ -7,12 +7,12 @@ This gif shows a summary of the process of the Color Cuber from 1 to 2048 iterat
 
 To use the program to create your own images, follow the process below (you will need to edit the file, indicated by #):
 
-    git clone https://github.com/erdavids/Python-Art
-    cd Color Cuber
+    git clone https://github.com/erdavids/Color-Cuber
+    cd Color-Cuber
     
 Place the original image in the orig folder and edit the fields at the top to indicate iteration and saving path
     
-    Python color_cuber.py
+    Python Color_Cuber.py
     
 
 
