@@ -1,14 +1,18 @@
 from PIL import Image, ImageDraw
 from operator import attrgetter
 
+# Background color, forms color of section padding
 FILL = (0, 0, 0)
-PATH_LOAD = 'orig/eyes.jpg'
-ITERATIONS = 8192
-PATH_SAVE = 'eyes_gif/eyes_8192.png'
+
+#############################
+# EDIT THESE FOR PERSONAL USE (
+PATH_LOAD = 'orig/example_load.jpg'
+ITERATIONS = 1024
+PATH_SAVE = 'eyes_gif/example_save.png'
+#############################
+
 
 SAVEALL = False
-
-
 ELLIPSE = False
 
 def weighted_average(hist):
