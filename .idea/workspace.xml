@@ -1,29 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f9b15565-2e53-4334-b30d-113189ad1cc0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/eyes_gif/eyes_1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/eyes_gif/eyes_1024.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/eyes_gif/eyes_128.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/eyes_gif/eyes_16.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/eyes_gif/eyes_2.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/eyes_gif/eyes_2048.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/eyes_gif/eyes_256.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/eyes_gif/eyes_32.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/eyes_gif/eyes_4.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/eyes_gif/eyes_4096 - Copy (2).png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/eyes_gif/eyes_4096 - Copy (3).png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/eyes_gif/eyes_4096 - Copy (4).png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/eyes_gif/eyes_4096 - Copy.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/eyes_gif/eyes_4096.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/eyes_gif/eyes_512.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/eyes_gif/eyes_64.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/eyes_gif/eyes_8.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/get-pip.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mod/cheetah.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mod/death_star.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Color_Cuber.py" afterPath="$PROJECT_DIR$/Color_Cuber.py" />
-    </list>
+    <list default="true" id="f9b15565-2e53-4334-b30d-113189ad1cc0" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,8 +21,8 @@
       <file leaf-file-name="Color_Cuber.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Color_Cuber.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state relative-caret-position="289">
+              <caret line="17" column="66" lean-forward="true" selection-start-line="17" selection-start-column="66" selection-end-line="17" selection-end-column="66" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -374,8 +352,8 @@
     <entry file="file://$PROJECT_DIR$/simple.py" />
     <entry file="file://$PROJECT_DIR$/Color_Cuber.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="289">
+          <caret line="17" column="66" lean-forward="true" selection-start-line="17" selection-start-column="66" selection-end-line="17" selection-end-column="66" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
