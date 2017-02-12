@@ -2,11 +2,14 @@ from PIL import Image, ImageDraw
 from operator import attrgetter
 
 FILL = (0, 0, 0)
-PATH_LOAD = 'orig/zebra.jpg'
-PATH_SAVE = 'mod/zebra.png'
-ITERATIONS = 300
+PATH_LOAD = 'orig/eyes.jpg'
+ITERATIONS = 8192
+PATH_SAVE = 'eyes_gif/eyes_8192.png'
 
-ELLIPSE = True
+SAVEALL = False
+
+
+ELLIPSE = False
 
 def weighted_average(hist):
     total = sum(hist)
@@ -93,12 +96,17 @@ class Original(object):
         new_im = Image.new('RGB', (self.width, self.height))
         draw = ImageDraw.Draw(new_im)
         draw.rectangle((0, 0, self.width, self.height), FILL)
+        frame = 1
         for sect in self.list:
             x0, y0, x1, y1 = sect.border
             if (ELLIPSE):
                 draw.ellipse((x0+1, y0+1, x1-1, y1-1), sect.color)
             else:
                 draw.rectangle((x0+1, y0+1, x1-1, y1-1), sect.color)
+                if (SAVEALL == True):
+                    new_im.save('eyes_gif/eyes_' + str(frame) + '.png')
+                    frame += 1
+
         new_im.save(PATH_SAVE)
 
 
